@@ -1,0 +1,22 @@
+{% extends "clearance_system/base.html" %}
+{% block title %}Clearance certificate{% endblock %}
+{% block content %}
+<div class="card" style="border:3px double var(--brand);text-align:center;padding:40px 24px;">
+  <p class="muted" style="letter-spacing:.2em;text-transform:uppercase;">University Clearance Certificate</p>
+  <h1 style="font-size:1.8rem;margin:16px 0;">{{ clearance.student.get_full_name|default:clearance.student.get_username }}</h1>
+  {% if clearance.student.profile.reg_number %}<p>Reg. No: {{ clearance.student.profile.reg_number }}</p>{% endif %}
+  {% if clearance.student.profile.faculty %}<p>Faculty: {{ clearance.student.profile.faculty }}</p>{% endif %}
+  <p>has been cleared by all {{ clearance.total }} offices listed below.</p>
+  <table style="max-width:520px;margin:20px auto;">
+    {% for a in approvals %}
+    <tr><td style="text-align:left;">{{ a.office.name }}</td><td style="text-align:right;">Approved {{ a.decided_at|date:"j M Y" }}</td></tr>
+    {% endfor %}
+  </table>
+  <p>Verification code: <strong>{{ clearance.code }}</strong></p>
+  <p class="muted">Issued {% now "j F Y" %}</p>
+</div>
+<div class="noprint row">
+  <button class="btn" onclick="window.print()">Print / save as PDF</button>
+  <a class="btn ghost" href="{% url 'clearance:home' %}">Back</a>
+</div>
+{% endblock %}

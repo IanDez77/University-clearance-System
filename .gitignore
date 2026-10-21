@@ -1,0 +1,8 @@
+myenv/
+__pycache__/
+*.py[cod]
+.env
+worm.sqlite3
+static/
+.idea/
+.vscode

@@ -1,0 +1,15 @@
+{% extends "clearance_system/base.html" %}
+{% block title %}Log in{% endblock %}
+{% block content %}
+<div class="card" style="max-width:420px;margin:40px auto;">
+  <h1>Log in</h1>
+  <p class="muted">Students and office staff sign in here.</p>
+  {% if form.errors %}<div class="msg error">Wrong username or password.</div>{% endif %}
+  <form method="post">
+    {% csrf_token %}
+    <p><label>Username<br>{{ form.username }}</label></p>
+    <p><label>Password<br>{{ form.password }}</label></p>
+    <button class="btn" type="submit">Log in</button>
+  </form>
+</div>
+{% endblock %}

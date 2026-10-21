@@ -1,0 +1,91 @@
+{% extends "common/base.html" %}
+{% block title %}University Clearance System | Home{% endblock %}
+{% block content %}
+<div class="ucs-home">
+  <div class="ucs-topline">
+    <div class="container ucs-topline-inner">
+      <span><i class="bi bi-shield-check me-2" aria-hidden="true"></i>Welcome to UCS </span>
+      <span class="ucs-topline-note"><i class="bi bi-lock me-1" aria-hidden="true"></i>Secure access for students and staff</span>
+    </div>
+  </div>
+
+  <header class="ucs-header">
+    <nav class="container navbar navbar-expand-lg ucs-navbar" aria-label="Main navigation">
+      <a class="navbar-brand ucs-brand" href="#home" aria-label="University Clearance System home">
+        <span class="ucs-brand-mark"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></span>
+        <span class="ucs-brand-copy"><strong>UNIVERSITY</strong><small>CLEARANCE SYSTEM</small></span>
+      </a>
+      <button class="navbar-toggler ucs-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#ucsNavigation" aria-controls="ucsNavigation" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list" aria-hidden="true"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="ucsNavigation">
+        <div class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <a class="nav-link ucs-nav-link" href="#how-it-works">How it works</a>
+          <a class="nav-link ucs-nav-link" href="#services">Services</a>
+          <a class="btn ucs-nav-admin" href="{% url 'admin:index' %}"><i class="bi bi-person-gear me-2" aria-hidden="true"></i>Admin portal</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="ucs-hero">
+      <div class="ucs-hero-glow ucs-hero-glow-one" aria-hidden="true"></div>
+      <div class="ucs-hero-glow ucs-hero-glow-two" aria-hidden="true"></div>
+      <div class="container ucs-hero-grid">
+        <div class="ucs-hero-copy">
+          <h1>Clearance,<br><span>made simpler.</span></h1>
+          <p class="ucs-hero-description">The system is designed to streamline the clearance process.</p>
+          <div class="ucs-hero-actions">
+            <a class="btn ucs-btn-primary" href="{% url 'clearance:home' %}">Continue to clearance <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i></a>
+            <a class="ucs-text-link" href="#how-it-works">Explore the process <i class="bi bi-arrow-down-right ms-1" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="ucs-hero-visual" aria-label="Illustration of a student clearance checklist">
+          <div class="ucs-visual-orbit ucs-orbit-large" aria-hidden="true"></div>
+          <div class="ucs-visual-orbit ucs-orbit-small" aria-hidden="true"></div>
+          <div class="ucs-visual-icon"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></div>
+          <div class="ucs-checklist-card">
+            <div class="ucs-checklist-heading"><span class="ucs-checklist-symbol"><i class="bi bi-clipboard2-check" aria-hidden="true"></i></span><span><strong>Clearance journey</strong><small>Clearance</small></span><i class="bi bi-three-dots ucs-card-menu" aria-hidden="true"></i></div>
+            <div class="ucs-checklist-row"><span class="ucs-step-icon ucs-step-done"><i class="bi bi-check-lg" aria-hidden="true"></i></span><span><strong>Access the portal</strong><small>Login and choose your faculty</small></span><span class="ucs-mini-status">STEP 01</span></div>
+            <div class="ucs-checklist-row"><span class="ucs-step-icon ucs-step-current"><i class="bi bi-list-check" aria-hidden="true"></i></span><span><strong>Initiate clearance</strong><small>Wait for response</small></span><span class="ucs-mini-status ucs-mini-current">STEP 02</span></div>
+            <div class="ucs-checklist-row"><span class="ucs-step-icon ucs-step-next"><i class="bi bi-patch-check" aria-hidden="true"></i></span><span><strong>Pending/approved/rejected</strong><small>Wait for the  various departments and faculties to approve/reject</small></span><span class="ucs-mini-status">STEP 03</span></div>
+            <div class="ucs-card-foot"><i class="bi bi-info-circle me-1" aria-hidden="true"></i>Make sure that you download<br>the clearance certificate after approvals</div>
+          </div>
+          <div class="ucs-floating-note"><span class="ucs-floating-note-icon"><i class="bi bi-lightning-charge-fill" aria-hidden="true"></i></span><span><strong>A smoother process</strong><small>Clear steps. One portal.</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ucs-process-section" id="how-it-works">
+      <div class="container">
+        <div class="ucs-section-heading">
+          <span class="ucs-section-kicker">HOW IT WORKS</span>
+          <h2>A clear path from start to finish.</h2>
+          <p></p>
+        </div>
+        <div class="row g-4 ucs-steps-row">
+          <div class="col-md-4"><article class="ucs-step-card"><div class="ucs-step-number">01</div><div class="ucs-step-card-icon"><i class="bi bi-box-arrow-in-right" aria-hidden="true"></i></div><h3>Open the portal</h3><p>Then Login.</p><span class="ucs-step-connector" aria-hidden="true"><i class="bi bi-arrow-right"></i></span></article></div>
+          <div class="col-md-4"><article class="ucs-step-card"><div class="ucs-step-number">02</div><div class="ucs-step-card-icon"><i class="bi bi-list-check" aria-hidden="true"></i></div><h3>Choose and save faculty</h3><p>Initiate clearance</p><span class="ucs-step-connector" aria-hidden="true"><i class="bi bi-arrow-right"></i></span></article></div>
+          <div class="col-md-4"><article class="ucs-step-card"><div class="ucs-step-number">03</div><div class="ucs-step-card-icon"><i class="bi bi-patch-check" aria-hidden="true"></i></div><h3>Wait for Approvals</h3><p>Follow up and Check the status of your process </p></article></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ucs-services-section" id="services">
+      <div class="container ucs-services-panel">
+        <div class="ucs-services-copy"><span class="ucs-section-kicker"></span><h2>Please Choose<br>an option.</h2><p></p></div>
+        <div class="ucs-service-actions">
+          <a class="ucs-service-link" href="{% url 'clearance:home' %}"><span class="ucs-service-icon"><i class="bi bi-mortarboard" aria-hidden="true"></i></span><span><strong>University clearance</strong><small>Continue to student clearance</small></span><i class="bi bi-arrow-up-right ucs-service-arrow" aria-hidden="true"></i></a>
+          <a class="ucs-service-link" href="{% url 'admin:index' %}"><span class="ucs-service-icon ucs-service-icon-admin"><i class="bi bi-sliders" aria-hidden="true"></i></span><span><strong>Administration</strong><small>Access authorized administration</small></span><i class="bi bi-arrow-up-right ucs-service-arrow" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ucs-footer">
+    <div class="container ucs-footer-inner"><a class="ucs-footer-brand" href="#home"><span class="ucs-footer-mark"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></span><span><strong>UNIVERSITY CLEARANCE SYSTEM</strong><small></small></span></a><span class="ucs-footer-note">Copyright® 2026.</span><a class="ucs-back-top" href="#home">Back to top <i class="bi bi-arrow-up ms-1" aria-hidden="true"></i></a></div>
+  </footer>
+</div>
+{% endblock %}

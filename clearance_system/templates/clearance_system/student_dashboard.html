@@ -1,0 +1,71 @@
+{% extends "clearance_system/base.html" %}
+{% block title %}My clearance{% endblock %}
+{% block content %}
+<h1>My clearance</h1>
+<p class="muted">Track every office you need to clear in one place.</p>
+
+{% if not clearance %}
+<div class="card">
+  <h2>Step 1: Choose your faculty</h2>
+  <form method="post" action="{% url 'clearance:choose_faculty' %}" class="row">
+    {% csrf_token %}
+    <select name="faculty" required style="padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:1rem;min-width:260px;">
+      <option value="" disabled {% if not faculty %}selected{% endif %}>Select your faculty</option>
+      {% for f in faculties %}
+      <option value="{{ f.pk }}" {% if faculty and faculty.pk == f.pk %}selected{% endif %}>{{ f }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn ghost" type="submit">Save faculty</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Step 2: Request clearance</h2>
+  {% if faculty %}
+  <p class="muted">Your request goes to the general offices and the {{ faculty.code }} faculty office.</p>
+  <form method="post" action="{% url 'clearance:submit_request' %}">
+    {% csrf_token %}
+    <button class="btn" type="submit">Request clearance</button>
+  </form>
+  {% else %}
+  <p class="muted">Save your faculty first, then you can request clearance.</p>
+  {% endif %}
+</div>
+{% else %}
+<div class="card">
+  <div class="row" style="justify-content:space-between;">
+    <h2 style="margin:0;">{{ clearance.approved_count }} of {{ clearance.total }} offices cleared</h2>
+    <span class="muted">{{ faculty.code }} &middot; Ref: {{ clearance.code }}</span>
+  </div>
+  <div class="progress"><div style="width:{{ clearance.percent }}%"></div></div>
+  {% if clearance.is_cleared %}
+    <p><strong>You are fully cleared.</strong></p>
+    <a class="btn ok" href="{% url 'clearance:certificate' clearance.pk %}">View clearance certificate</a>
+  {% elif clearance.has_rejection %}
+    <p class="muted">Some offices rejected your request. Fix the issue, then send it back.</p>
+  {% else %}
+    <p class="muted">Waiting for offices to review.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <table>
+    <tr><th>Office</th><th>Status</th><th>Note</th><th></th></tr>
+    {% for a in approvals %}
+    <tr>
+      <td>{{ a.office.name }}</td>
+      <td><span class="badge {{ a.status }}">{{ a.get_status_display }}</span></td>
+      <td>{{ a.comment|default:"-" }}</td>
+      <td>
+        {% if a.status == "rejected" %}
+        <form method="post" action="{% url 'clearance:resubmit' a.pk %}" class="inline">
+          {% csrf_token %}<button class="btn ghost" type="submit">Resubmit</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
+{% endblock %}
