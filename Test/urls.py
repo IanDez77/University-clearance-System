@@ -6,4 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view, name='home'),
     path('clearance/', include("clearance_system.urls")),
+    path('contact/', views.contact_us, name='contact_us'),
+    path('help-desk/', views.help_desk, name='help_desk'),
+    path('about-us/', views.about_us, name='about_us'),
 ]

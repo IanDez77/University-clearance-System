@@ -1,0 +1,69 @@
+{% extends "common/base.html" %}
+
+{% block title %}Help Desk | UCS{% endblock %}
+
+{% block content %}
+<section class="help-desk-page">
+
+    <div class="help-header">
+        <span class="help-label">SUPPORT CENTRE</span>
+        <h1>Help Desk</h1>
+        <p>
+            Need assistance with the University Clearance System? Contact our support team
+            using the details below.
+        </p>
+    </div>
+
+    <div class="help-grid">
+
+        <div class="help-card">
+            <div class="help-icon">☎</div>
+            <h2>Phone Contacts</h2>
+            <p>Speak to our support team for assistance.</p>
+            <a href="tel:+254700000000">+254 700 000 000</a><br>
+            <a href="tel:+254711000000">+254 711 000 000</a>
+        </div>
+
+        <div class="help-card">
+            <div class="help-icon">✉</div>
+            <h2>Email Support</h2>
+            <p>Send us your enquiries or technical issues.</p>
+            <a href="mailto:info@ucs.co.ke">
+                info@ucs.co.ke
+            </a><br>
+            <a href="mailto:info@ucs.co.ke">
+               info@ucs.co.ke
+            </a>
+        </div>
+
+        <div class="help-card">
+            <div class="help-icon">⌖</div>
+            <h2>Our Location</h2>
+            <p>Visit our offices for further assistance.</p>
+            <p class="help-address">
+                Malipo Circles<br>
+                Kayawhe Road<br>
+                Nairobi, Kenya
+            </p>
+            <a href="https://maps.app.goo.gl/rr5AtTzBxhpqLdAA7"
+               target="_blank" rel="noopener noreferrer">
+                View on Google Maps →
+            </a>
+        </div>
+
+    </div>
+
+    <div class="help-note">
+        <h2>Still need help?</h2>
+        <p>
+            You can also send us a message through our Contact Us page.
+        </p>
+        <a class="help-contact-button"
+           href="{% url 'contact_us' %}">
+            Contact Us
+        </a>
+    </div>
+
+</section>
+{% endblock %}
+```

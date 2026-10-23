@@ -1,34 +1,7 @@
 {% extends "common/base.html" %}
 {% block title %}University Clearance System | Home{% endblock %}
 {% block content %}
-<div class="ucs-home">
-  <div class="ucs-topline">
-    <div class="container ucs-topline-inner">
-      <span><i class="bi bi-shield-check me-2" aria-hidden="true"></i>Welcome to UCS </span>
-      <span class="ucs-topline-note"><i class="bi bi-lock me-1" aria-hidden="true"></i>Secure access for students and staff</span>
-    </div>
-  </div>
-
-  <header class="ucs-header">
-    <nav class="container navbar navbar-expand-lg ucs-navbar" aria-label="Main navigation">
-      <a class="navbar-brand ucs-brand" href="#home" aria-label="University Clearance System home">
-        <span class="ucs-brand-mark"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></span>
-        <span class="ucs-brand-copy"><strong>UNIVERSITY</strong><small>CLEARANCE SYSTEM</small></span>
-      </a>
-      <button class="navbar-toggler ucs-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#ucsNavigation" aria-controls="ucsNavigation" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="bi bi-list" aria-hidden="true"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="ucsNavigation">
-        <div class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-          <a class="nav-link ucs-nav-link" href="#how-it-works">How it works</a>
-          <a class="nav-link ucs-nav-link" href="#services">Services</a>
-          <a class="btn ucs-nav-admin" href="{% url 'admin:index' %}"><i class="bi bi-person-gear me-2" aria-hidden="true"></i>Admin portal</a>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <main id="home">
+<main id="home">
     <section class="ucs-hero">
       <div class="ucs-hero-glow ucs-hero-glow-one" aria-hidden="true"></div>
       <div class="ucs-hero-glow ucs-hero-glow-two" aria-hidden="true"></div>
@@ -84,8 +57,5 @@
     </section>
   </main>
 
-  <footer class="ucs-footer">
-    <div class="container ucs-footer-inner"><a class="ucs-footer-brand" href="#home"><span class="ucs-footer-mark"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></span><span><strong>UNIVERSITY CLEARANCE SYSTEM</strong><small></small></span></a><span class="ucs-footer-note">Copyright® 2026.</span><a class="ucs-back-top" href="#home">Back to top <i class="bi bi-arrow-up ms-1" aria-hidden="true"></i></a></div>
-  </footer>
 </div>
 {% endblock %}

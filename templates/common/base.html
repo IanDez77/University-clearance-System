@@ -1,4 +1,5 @@
-{% load static %}<!doctype html>
+{% load static %}
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -6,11 +7,71 @@
   <title>{% block title %}Website{% endblock %}</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
   {% block extra_head %}{% endblock %}
 </head>
 <body>
-  {% block content %}{% endblock %}
+<div class="ucs-home">
+  <div class="ucs-topline">
+    <div class="container ucs-topline-inner">
+      <span><i class="bi bi-shield-check me-2" aria-hidden="true"></i>Welcome to UCS </span>
+      <span class="ucs-topline-note"><i class="bi bi-lock me-1" aria-hidden="true"></i>Secure access for students and staff</span>
+    </div>
+  </div>
+
+  <header class="ucs-header">
+    <nav class="container navbar navbar-expand-lg ucs-navbar" aria-label="Main navigation">
+      <a class="navbar-brand ucs-brand" href="{% url 'home' %}" aria-label="University Clearance System home">
+        <span class="ucs-brand-mark"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></span>
+        <span class="ucs-brand-copy"><strong>UNIVERSITY</strong><small>CLEARANCE SYSTEM</small></span>
+      </a>
+      <button class="navbar-toggler ucs-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#ucsNavigation" aria-controls="ucsNavigation" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list" aria-hidden="true"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="ucsNavigation">
+        <div class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <a class="nav-link ucs-nav-link" href="#how-it-works">How it works</a>
+          <a class="nav-link ucs-nav-link" href="#services">Services</a>
+          <a class="btn ucs-nav-admin" href="{% url 'admin:index' %}"><i class="bi bi-person-gear me-2" aria-hidden="true"></i>Admin portal</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  {% block content %}
+  
+  
+  {% endblock %}
+
+    <footer class="ucs-footer">
+    <div class="container">
+        <!-- Bottom bar: brand, copyright, back to top -->
+        <div class="ucs-footer-inner">
+            <a class="ucs-footer-brand" href="{% url 'home' %}">
+                <span class="ucs-footer-mark"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></span>
+                <span><strong>UNIVERSITY CLEARANCE SYSTEM</strong></span>
+            </a>
+            <span class="ucs-footer-note">&copy; 2026 University Clearance System.</span>
+            <a class="ucs-back-top" href="#home">Back to top <i class="bi bi-arrow-up ms-1" aria-hidden="true"></i></a>
+        </div>
+
+        <!-- Top row: Resources -->
+        <div class="row py-4">
+            <div class="col-lg-4 col-6">
+                <h6 class="text-white small text-uppercase">Resources</h6>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="#">UCS</a></li>
+                    <li class="mb-2"><a href="{% url 'help_desk' %}">Help desk</a></li>
+                    <li class="mb-2"><a href="{% url 'about_us' %}">About Us</a></li>
+                    <li class="mb-2"><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        
+    </div>
+</footer>
+
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   {% block extra_js %}{% endblock %}
 </body>
