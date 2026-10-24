@@ -26,3 +26,6 @@ def contact_us(request):
         return redirect("contact_us")
     
     return render(request, "common/contact_us.html")
+
+def testimonials(request):
+    return render(request, "common/testimonials.html")
