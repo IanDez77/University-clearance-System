@@ -1,0 +1,86 @@
+{% extends "common/base.html" %}
+
+{% block title %}System Status | UCS{% endblock %}
+
+{% block content %}
+
+<section class="status-section">
+    <h1>System Status</h1>
+    <p>Check the availability of the University Clearance System.</p>
+
+    <div class="status-card">
+        <div id="status-indicator" class="status-indicator checking">
+            Checking system...
+        </div>
+
+        <p id="status-message">
+            Please wait while we check the system.
+        </p>
+
+        <div class="status-details">
+            <div>
+                <span>Application</span>
+                <strong id="app-status">Checking...</strong>
+            </div>
+
+            <div>
+                <span>Database</span>
+                <strong id="db-status">Checking...</strong>
+            </div>
+        </div>
+
+        <p class="last-checked">
+            Last checked: <span id="last-checked">Not yet checked</span>
+        </p>
+    </div>
+</section>
+
+<script>
+    async function checkSystemStatus() {
+        const indicator = document.getElementById("status-indicator");
+        const message = document.getElementById("status-message");
+        const appStatus = document.getElementById("app-status");
+        const dbStatus = document.getElementById("db-status");
+
+        try {
+            const response = await fetch("{% url 'health_check' %}", {
+                cache: "no-store"
+            });
+
+            const data = await response.json();
+
+            appStatus.textContent = data.application || "Unknown";
+            dbStatus.textContent = data.database || "Unknown";
+
+            indicator.className = "status-indicator";
+
+            if (response.ok && data.status === "operational") {
+                indicator.classList.add("operational");
+                indicator.textContent = "Operational";
+                message.textContent =
+                    "All checked systems are working normally.";
+            } else {
+                indicator.classList.add("degraded");
+                indicator.textContent = "Degraded";
+                message.textContent =
+                    "The system is responding, but a component is experiencing problems.";
+            }
+        } catch (error) {
+            indicator.className = "status-indicator outage";
+            indicator.textContent = "Major outage";
+            message.textContent =
+                "The system could not be reached. It may be temporarily unavailable.";
+
+            appStatus.textContent = "Unreachable";
+            dbStatus.textContent = "Unknown";
+        }
+
+        document.getElementById("last-checked").textContent =
+            new Date().toLocaleTimeString();
+    }
+
+    checkSystemStatus();
+    setInterval(checkSystemStatus, 30000);
+</script>
+
+{% endblock %}
