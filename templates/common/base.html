@@ -44,34 +44,78 @@
 
     <footer class="ucs-footer">
     <div class="container">
-        <!-- Bottom bar: brand, copyright, back to top -->
-        <div class="ucs-footer-inner">
-            <a class="ucs-footer-brand" href="{% url 'home' %}">
-                <span class="ucs-footer-mark"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i></span>
-                <span><strong>UNIVERSITY CLEARANCE SYSTEM</strong></span>
-            </a>
-            <span class="ucs-footer-note">&copy; 2026 University Clearance System.</span>
-            <a class="ucs-back-top" href="#home">Back to top <i class="bi bi-arrow-up ms-1" aria-hidden="true"></i></a>
-        </div>
+        <!-- Top Row: Split into 4 evenly spaced columns -->
+        <div class="row pb-3 mb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+            
+            <!-- Column 1: Brand & Tagline -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <a class="ucs-footer-brand d-flex align-items-center mb-3 text-decoration-none" href="{% url 'home' %}">
+                    <span class="ucs-footer-mark d-inline-flex align-items-center justify-content-center me-2">
+                        <i class="bi bi-mortarboard-fill" aria-hidden="true"></i>
+                    </span>
+                    <span class="text-white"><strong>UNIVERSITY CLEARANCE SYSTEM</strong></span>
+                </a>
+                <p class="small text-slate mb-0" style="max-width: 240px; font-size: 0.85rem; line-height: 1.4;">
+                    Streamlining the clearance process for students and staff.
+                </p>
+            </div>
 
-        <!-- Top row: Resources -->
-        <div class="row py-4">
-            <div class="col-lg-4 col-6">
+            <!-- Column 2: Resources -->
+            <div class="col-lg-2 offset-lg-1 col-md-6 mb-4 mb-lg-0">
                 <h6 class="text-white small text-uppercase">Resources</h6>
-                <ul class="list-unstyled small">
-                    <li class="mb-2"><a href="#">UCS</a></li>
-                    <li class="mb-2"><a href="{% url 'help_desk' %}">Help desk</a></li>
-                    <li class="mb-2"><a href="{% url 'about_us' %}">About Us</a></li>
-                    <li class="mb-2"><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                <ul class="list-unstyled small mb-0">
+                    <li class="mb-1"><a href="{% url 'testimonials' %}" class="text-decoration-none">Testimonials</a></li>
+                    <li class="mb-1"><a href="{% url 'about_us' %}" class="text-decoration-none">About Us</a></li>
+                    <li class="mb-1"><a href="#" class="text-decoration-none">Clearance Guide</a></li> <!-- Check URL Pattern -->
+                    <li class="mb-0"><a href="#" class="text-decoration-none">System Status</a></li> <!-- Check URL Pattern -->
                 </ul>
             </div>
+
+            <!-- Column 3: Support & FAQs -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h6 class="text-white small text-uppercase">Support & FAQs</h6>
+                <ul class="list-unstyled small mb-0">
+                    <li class="mb-1"><a href="{% url 'help_desk' %}" class="text-decoration-none">Support Desk</a></li>
+                    <li class="mb-1"><a href="#" class="text-decoration-none">FAQs</a></li> <!-- Check URL Pattern -->
+                    <li class="mb-0"><a href="{% url 'contact_us' %}" class="text-decoration-none">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact & Hours -->
+            <div class="col-lg-3 col-md-6">
+                <h6 class="text-white small text-uppercase">Contact & Hours</h6>
+                <ul class="list-unstyled small mb-3 text-muted">
+                    <li class="mb-1">
+                        <i class="bi bi-telephone-fill me-1" aria-hidden="true"></i> 
+                        +254 760 12 3456
+                    </li>
+                    <li class="mb-1">
+                        <i class="bi bi-envelope-fill me-1" aria-hidden="true"></i> 
+                        support@ucs.co.ke
+                    </li>
+                    <li class="mb-0">
+                        Mon - Fri: 8:00 AM - 5:00 PM
+                    </li>
+                </ul>
+                <!-- Social media placeholder -->
+                <div class="ucs-footer-socials">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="me-2 text-decoration-none text-muted"><i class="bi bi-facebook fs-5"></i></a>
+                    <a href="https://X.com" target="_blank" rel="noopener noreferrer" class="me-2 text-decoration-none text-muted"><i class="bi bi-twitter-x fs-5"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-muted"><i class="bi bi-linkedin fs-5"></i></a>
+                </div>
+            </div>
+
         </div>
 
-        
+        <!-- Bottom Bar: Copyright & Back to top -->
+        <div class="ucs-footer-bottom d-flex flex-column flex-sm-row justify-content-between align-items-center">
+            <span class="ucs-footer-note small mb-2 mb-sm-0">&copy; 2026 University Clearance System.</span>
+            <a class="ucs-back-top small text-decoration-none" href="{% url 'home' %}">Back to top <i class="bi bi-arrow-up ms-1" aria-hidden="true"></i></a>
+        </div>
     </div>
 </footer>
 
-  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   {% block extra_js %}{% endblock %}
 </body>
