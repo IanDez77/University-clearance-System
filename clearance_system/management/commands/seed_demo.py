@@ -24,7 +24,9 @@ class Command(BaseCommand):
         user, created = User.objects.get_or_create(username=username)
         if created:
             user.set_password(DEMO_PASSWORD)
-            user.save()
+        if not user.email:
+            user.email = f"{username}@example.com"
+        user.save()
         Profile.objects.update_or_create(
             user=user, defaults={"role": Profile.OFFICE, "office": office}
         )
@@ -64,7 +66,9 @@ class Command(BaseCommand):
             )
             if created:
                 user.set_password(DEMO_PASSWORD)
-                user.save()
+            if not user.email:
+                user.email = f"student{n}@example.com"
+            user.save()
             Profile.objects.update_or_create(
                 user=user,
                 defaults={"role": Profile.STUDENT, "reg_number": f"S00{n}/2026"},
