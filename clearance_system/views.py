@@ -12,6 +12,7 @@ from django.views.decorators.http import require_POST
 
 from django.db.models import Q
 
+from . import notifications
 from .models import ClearanceRequest, Faculty, Office, OfficeApproval, Profile
 
 
@@ -105,6 +106,7 @@ def submit_request(request):
         OfficeApproval.objects.bulk_create(
             [OfficeApproval(request=clearance, office=o) for o in offices]
         )
+    notifications.request_submitted(request, clearance)
     messages.success(request, "Clearance request submitted to all offices.")
     return redirect("clearance:student_dashboard")
 
@@ -122,6 +124,7 @@ def resubmit(request, pk):
     approval.decided_by = None
     approval.decided_at = None
     approval.save()
+    notifications.resubmitted(request, approval)
     messages.success(request, f"Sent back to {approval.office.name} for review.")
     return redirect("clearance:student_dashboard")
 
@@ -183,5 +186,6 @@ def decide(request, pk):
     approval.decided_by = request.user
     approval.decided_at = timezone.now()
     approval.save()
+    notifications.decision_made(request, approval)
     messages.success(request, f"Request {approval.request.code} {approval.status}.")
     return redirect("clearance:office_queue")
