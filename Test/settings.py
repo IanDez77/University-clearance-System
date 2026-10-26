@@ -148,7 +148,14 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
 MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+       "default": {
+           "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
+           "OPTIONS": {
+               "host": "smtp.gmail.com", "port": 587, "use_tls": True,
+               "username": "ianmuya7@gmail.com",
+               "password": "vbdm yxdg rdin vghn",
+           },
+       },
+   }
+
+DEFAULT_FROM_EMAIL = "University Clearance <ianmuya7@gmail.com>"
