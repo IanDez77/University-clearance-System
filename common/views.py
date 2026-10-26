@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import ContactMessage
+from django.http import JsonResponse
+from django.db import connection
+from django.shortcuts import render
 
 
 def base_view(request):
@@ -29,3 +32,31 @@ def contact_us(request):
 
 def testimonials(request):
     return render(request, "common/testimonials.html")
+
+def faqs(request):
+    return render(request, "common/faqs.html")   
+
+def clearance_guide(request):
+    return render(request, "common/clearance_guide.html") 
+
+def health_check(request):
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+
+        return JsonResponse({
+            "status": "operational",
+            "application": "online",
+            "database": "online",
+        })
+
+    except Exception:
+        return JsonResponse({
+            "status": "degraded",
+            "application": "online",
+            "database": "offline",
+        }, status=503)
+
+
+def system_status(request):
+    return render(request, "common/status.html")
